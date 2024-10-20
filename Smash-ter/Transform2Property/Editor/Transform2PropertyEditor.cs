@@ -12,7 +12,6 @@ public class Transform2PropertyEditor : Editor
     public void MatrixField(string name, Matrix4x4 matrix)
     {
         GUILayout.Label(name);
-        EditorGUI.indentLevel += 1;
         for (int j = 0; j < 4; j++)
         {
             EditorGUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
@@ -22,21 +21,6 @@ public class Transform2PropertyEditor : Editor
             }
             EditorGUILayout.EndHorizontal();
         }
-        EditorGUI.indentLevel -= 1;
-    }
-
-    public bool BeginSection(string title, ref bool foldout)
-    {
-        EditorGUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-        foldout = EditorGUILayout.Foldout(foldout, title, EditorStyles.foldoutHeader);
-        EditorGUILayout.EndHorizontal();
-        EditorGUI.indentLevel += 1;
-        return foldout;
-    }
-    
-    public void EndSection()
-    {
-        EditorGUI.indentLevel -= 1;
     }
     
     public override void OnInspectorGUI()
